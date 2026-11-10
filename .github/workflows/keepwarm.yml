@@ -1,0 +1,18 @@
+name: keep-warm
+on:
+  schedule:
+    - cron: "*/5 * * * *"      # GitHub's shortest interval; each run keeps pinging for ~4 minutes so gaps stay small
+  workflow_dispatch: {}
+permissions:
+  contents: read
+concurrency:
+  group: keep-warm
+  cancel-in-progress: false
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ping sites every 60 seconds for about 4 minutes
+        run: scripts/ping.sh 5 60

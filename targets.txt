@@ -1,0 +1,5 @@
+# One public URL per line. These routes reach the database, so they keep Neon/Postgres awake too.
+https://dev.admin.packets.build/api/health
+https://play.packets.build/api/gate
+https://www.packets.build/blog
+https://www.packets.build/
